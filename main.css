@@ -1,0 +1,112 @@
+/*
+ *   This program is free software: you can redistribute it and/or modify
+ *   it under the terms of the GNU General Public License as published by
+ *   the Free Software Foundation, either version 3 of the License, or
+ *   (at your option) any later version.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   You should have received a copy of the GNU General Public License
+ *   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ *    Copyrights (C) 2016 Andrea Tassotti
+ */
+
+
+h1 {
+	font-family: arial, helvetica, verdana;
+}
+
+h2 {
+	font-family: arial, helvetica, verdana;
+}
+
+h3 {
+	font-family: arial, helvetica, verdana;
+}
+
+li
+ {
+	font-family: arial, helvetica, verdana;
+}
+
+span.punteggio{
+	font-family: arial, helvetica, verdana;
+	font-size:12pt;
+	font-weight: bold;
+	color: blue;
+}
+
+.win {
+	color: green;
+}
+
+.loose {
+	color: red;
+}
+
+#game-playfield {
+	width: 400px;
+	float:left;
+	display:inline-block;
+	border-radius: 10px;
+	border: 6px solid gold;
+	padding: 5px;
+}
+
+#sidebar {
+	background:#ffffe0;
+	margin-left: 440px;
+	border-radius: 10px;
+	border: 6px solid gold;
+	padding: 5px;
+}
+
+button {
+	border-radius: 10px;
+	background-color: white;
+	color: black;
+}
+
+button:hover {
+	background-color: #f0f0f0;
+}
+
+button.verifica {
+		border: 2px solid #4CAF50;
+}
+button.resa {
+		border: 2px solid red;
+}
+
+.animated {
+            //background-image: url(/css/images/logo.png); 
+            background-repeat: no-repeat;
+            background-position: left top; 
+            //padding-top:95px;
+            //margin-bottom:60px;
+            -webkit-animation-duration: .7s; 
+            animation-duration: .7s; 
+            -webkit-animation-fill-mode: both; 
+            animation-fill-mode: both;
+         }
+      
+@-webkit-keyframes shake {
+            0%, 100% {-webkit-transform: translateX(0);} 
+            10%, 30%, 50%, 70%, 90% {-webkit-transform: translateX(-5px);} 
+            20%, 40%, 60%, 80% {-webkit-transform: translateX(5px);} 
+}
+         
+@keyframes shake { 
+            0%, 100% {transform: translateX(0);} 
+            10%, 30%, 50%, 70%, 90% {transform: translateX(-5px);} 
+            20%, 40%, 60%, 80% {transform: translateX(5px);} 
+}
+         
+.shake { 
+            -webkit-animation-name: shake; 
+            animation-name: shake; 
+}

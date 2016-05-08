@@ -1,0 +1,73 @@
+<!doctype html>
+<!--
+#    This program is free software: you can redistribute it and/or modify
+#    it under the terms of the GNU General Public License as published by
+#    the Free Software Foundation, either version 3 of the License, or
+#    (at your option) any later version.
+#
+#    This program is distributed in the hope that it will be useful,
+#    but WITHOUT ANY WARRANTY; without even the implied warranty of
+#    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#    GNU General Public License for more details.
+#
+#    You should have received a copy of the GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#    Copyrights (C) 2016 Andrea Tassotti
+-->
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<link href="main.css" rel="stylesheet" type="text/css">
+	<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+	<script src="controller.js"></script>
+
+</head>
+
+<body   ng-app="strikeball">
+<div ng-controller="sb_controller">
+	<h1>Strike & Ball</h1>
+	<div>
+		<h1 ng-show="win === true" class="animated shake win">Hai Vinto !
+		<button ng-click="nuova();">Nuova partita!</button>
+		</h1>
+		<h1 ng-show="win === false" class="animated shake loose" ng-click="nuova()">Hai Perso ! Il numero era {{ nascosto }}
+		<button>Rigioca</button></h1>
+	</div>
+	<div id="game-playfield">
+		Indica un numero di {{ len }} cifre
+		<!-- TODO: validazione -->
+		<input type="text" ng-model="risposta" maxlength="{{ len }}" ng-keyup="$event.keyCode == 13 && risposta.length == len && verifica()">
+		<button class="verifica" ng-disabled="risposta.length < len || win === true" ng-click="verifica()">Verifica</button><br>
+		<button ng-click="resa()" class="resa" ng-disabled="win !== null" >Mi arrendo!</button>
+
+		<h3>Risposte</h3>
+		<ul>
+			<li ng-repeat="x in risposte">
+			{{ $index + 1 }} : <code>{{ x.utente }}</code> <b>{{ x.match }}</b>
+			</li>
+		</ul>
+	</div>
+	<div id="sidebar">
+    		<b>Tempo:</b> <span my-current-time="format"></span>
+		<h3>Punteggio attuale</h3>
+		<div>
+			<span class="punteggio">{{ Math.round(punteggio,2) }}</span>
+			<h3>Statistiche</h3>
+			Vittorie: {{ vittorie }}<br>
+			Sconfitte: {{ sconfitte }}<br>
+			Rese: {{ rese }}<br>
+			Miglior risultato: {{ migliore == -1 ? 0 : migliore }} tentativi<br>
+			Peggior risultato: {{ peggiore }} tentativi<br>
+			Tempo medio: {{ tempo - 1 * 60 * 60 * 1000| date: 'HH:mm:ss' }}
+		</div>
+		<h3><a href ng-click="showoptions = !showoptions">Opzioni</a></h3>
+		<div ng-show="showoptions">
+			<input type="number" style="width: 36px" min="1" max="9" required ng-model="len" ng-change="len > 0 && nuova()"> Numero di cifre<br>
+			<input type="number" style="width: 36px" min="10" max="50" required ng-model="max_risposte"> Numero di tentativi<br>
+		</div>
+	</div>
+</div>
+
+</body>
+</html>
